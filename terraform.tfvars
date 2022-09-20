@@ -1,0 +1,5 @@
+project_id               = "jbc-static-websites-prod"
+region                   = "us-central1"
+zone                     = "us-central1-c"
+service_account          = "sac-jbc-staticweb-terraform@jbc-static-web-terraform-build.iam.gserviceaccount.com"
+billing_account          = "0133EC-3AA6A0-4AF0DB"
