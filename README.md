@@ -16,12 +16,3 @@ Resources included are:
 - Include a LB before the buckets so it can distribute better the traffic
 - Use Cloud CDN to optimize delivery - maybe overkill for static websites, with low content
 
-<<<<<<< HEAD
-GCS - to store the web files and serve it
-A Wordpress server - to manipulate this content
-A LB to serve the contents from the GCS
-use only a single zone, only if, to use a region is free
-
-Use a wordpress 
-=======
->>>>>>> dev
