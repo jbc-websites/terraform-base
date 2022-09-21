@@ -17,3 +17,8 @@ variable "billing_account" {
   type = string
   description = "billing account id"
 }
+
+variable "project_id" {
+  type = string
+  description = "project_id of the project where it will be provisioned resources"
+}
