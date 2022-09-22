@@ -8,7 +8,7 @@ variable "zone" {
   description = "default zone"
 }
 
-variable "service_account" {
+variable "terraform_service_account" {
   type = string
   description = "the service account used by terraform to build resources"
 }
@@ -21,4 +21,9 @@ variable "billing_account" {
 variable "project_id" {
   type = string
   description = "project_id of the project where it will be provisioned resources"
+}
+
+variable "env" {
+  type = string
+  description = "default zone"
 }
