@@ -1,7 +1,7 @@
 module "network" {
   source                    = "terraform-google-modules/network/google"
   project_id                = var.project_id
-  network_name              = "jbc-main-network"
+  network_name              = "static-web-main-network"
   auto_create_subnetworks   = false
   mtu                       = 1460
   
