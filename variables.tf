@@ -8,6 +8,11 @@ variable "zone" {
   description = "default zone"
 }
 
+variable "zone_alt" {
+  type = string
+  description = "alternate zone"
+}
+
 variable "terraform_service_account" {
   type = string
   description = "the service account used by terraform to build resources"
@@ -25,5 +30,20 @@ variable "project_id" {
 
 variable "env" {
   type = string
-  description = "default zone"
+  description = "env to be used"
+}
+
+variable "path_to_file" {
+  type = string
+  description = "use this variable to set the startup script file"
+}
+
+variable "vm_type_default" {
+  type = string
+  description = "default vm type"
+}
+
+variable "vm_type_small" {
+  type = string
+  description = "smaller vm type"
 }

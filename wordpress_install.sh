@@ -36,6 +36,10 @@ echo '<VirtualHost *:80>
         DirectoryIndex index.php
         Require all granted
     </Directory>
+    <Directory /srv/www/wordpress/wp-content>
+        Options FollowSymLinks
+        Require all granted
+    </Directory>
 </VirtualHost>
 ' | sudo tee /etc/apache2/sites-available/wordpress.conf
 
@@ -52,7 +56,7 @@ sudo a2dissite 000-default
 sudo service apache2 reload
 
 # configure mysql/mariadb database
-mysql -u root -e "CREATE DATABASE wordpress;CREATE USER wordpress@localhost IDENTIFIED BY '15101310'; GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO wordpress@localhost;FLUSH PRIVILEGES;";
+sudo mysql -u root -e "CREATE DATABASE wordpress;CREATE USER wordpress@localhost IDENTIFIED BY '15101310'; GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO wordpress@localhost;FLUSH PRIVILEGES;";
 
 # configure wordpress to connect to the database
 sudo -u www-data cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php
@@ -70,12 +74,10 @@ done
 
 # change the configuration file to have randomized keys,
 # this avoids some known attacks
-
-curl https://api.wordpress.org/secret-key/1.1/salt/ | tee temp_secret
-
-# insert randomized content
+# insert randomized content in the end of file
 curl https://api.wordpress.org/secret-key/1.1/salt/ >> wp-config.php
 
-# display external ip if any 
-dig +short myip.opendns.com @resolver1.opendns.com
+# display and save external ip
+dig +short myip.opendns.com @resolver1.opendns.com | tee my_ip
 
+wp plugin install wp-stateless --activate

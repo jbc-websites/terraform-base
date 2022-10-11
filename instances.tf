@@ -1,23 +1,22 @@
-# this resource attaches the disk resouce to the machine
-# resource "google_compute_attached_disk" "default" {
-#   disk     = google_compute_disk.default.id
-#   instance = google_compute_instance.wp-instance.id
-# }
-
 resource "google_compute_instance" "wp-instance" {
   project = var.project_id
   name = "wp-instance"
-  description = "this is the wordpress instance where it will manage the sites"
-  machine_type = "f1-micro"
-  zone         = "us-central1-a"
+  description = "this is the wordpress instance where it will manage and serve the sites"
+  machine_type = var.vm_type_default
+  zone         = var.zone
   
   boot_disk {
+     
     initialize_params {
+      size = "10"
+      type = "pd-standard"
       image = "debian-10-buster-v20220406"
     }
+   
   }
 
-  metadata_startup_script = "sudo apt-get update;"
+# metadata_startup_script = "sudo apt-get update;"
+  metadata_startup_script = "${file(var.path_to_file)}"
 
   network_interface {
     network = "static-web-main-network"
@@ -28,10 +27,5 @@ resource "google_compute_instance" "wp-instance" {
   }
   
   allow_stopping_for_update = true
-  
-  # this is needed to let the disks resource manage the attached disk
-  # lifecycle {
-  #   ignore_changes = [attached_disk]
-  # }
 
 }
