@@ -8,3 +8,4 @@ env                         = "prod"
 path_to_file                = "./wordpress_install.sh"
 vm_type_default             = "e2-micro"
 vm_type_small               = "f1-micro"
+allowed_ip_range            = [ "200.186.51.0/24","201.17.159.0/24" ]

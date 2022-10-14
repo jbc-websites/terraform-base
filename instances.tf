@@ -4,7 +4,7 @@ resource "google_compute_instance" "wp-instance" {
   description = "this is the wordpress instance where it will manage and serve the sites"
   machine_type = var.vm_type_default
   zone         = var.zone
-  
+  tags = ["wp-instance"]
   boot_disk {
      
     initialize_params {

@@ -47,3 +47,8 @@ variable "vm_type_small" {
   type = string
   description = "smaller vm type"
 }
+
+variable "allowed_ip_range" {
+  type = list(string)
+  description = "variable that holds the allowed ips"
+}
