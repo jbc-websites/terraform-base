@@ -10,6 +10,7 @@ Resources included are:
 - prod and dev projects
 - uses a manually created backend (storage, service account)
 - a simple VM with wordpress configured to manage the websites in GCS
+- a snapshot(TBD: snapshot, image, disk?) stored in another project to serve as a default config
 
 ## nice to have
 
